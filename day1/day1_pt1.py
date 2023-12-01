@@ -29,7 +29,6 @@ with open('input', 'r', encoding='cp1047') as file:
 
     # Convert to a digit and add to total
     final_num = int(final_num)
-    print(f'{line}:{final_num}')
     running_total += final_num
 
 print(running_total) 
