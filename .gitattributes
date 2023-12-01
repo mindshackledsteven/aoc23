@@ -1,0 +1,5 @@
+# The default for text files
+*       git-encoding=iso8859-1 zos-working-tree-encoding=ibm-1047
+# git's files (which MUST be ASCII)
+.gitattributes   git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
+.gitignore       git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
