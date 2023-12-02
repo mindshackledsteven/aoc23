@@ -10,7 +10,7 @@
 #   *   ||||     *    Seven9s.com - Buy a shirt or something
 
 # Keep tally of possible games
-possible_accumulator = 0
+power_accumulator = 0
 
 with open('input', 'r', encoding='cp1047') as file:
     data = file.readlines()
@@ -26,11 +26,12 @@ with open('input', 'r', encoding='cp1047') as file:
 
         game_possible = True
 
+        max_red = 0
+        max_green = 0
+        max_blue = 0
+
         # Break the draws into color
         for draw in draws:
-            max_red = 12
-            max_green = 13
-            max_blue = 14
             draw_red = 0
             draw_green = 0
             draw_blue = 0
@@ -51,14 +52,15 @@ with open('input', 'r', encoding='cp1047') as file:
                     elif color == 'blue':
                         draw_blue = int(count)
 
-            # print('Reds', max_red - draw_red)
-            # print('Greens', max_green - draw_green)
-            # print('Blues', max_blue - draw_blue)
-            if game_possible is not False:
-                game_possible = draw_red <= max_red and draw_green <= max_green and draw_blue <= max_blue
+            # Set the upper bounds for each color
+            if draw_red > max_red:
+                max_red = draw_red
+            if draw_green > max_green:
+                max_green = draw_green
+            if draw_blue > max_blue:
+                max_blue = draw_blue
 
-        print(game_number, game_possible)
-        if game_possible:
-            possible_accumulator += game_number
+        game_power = max_red * max_green * max_blue
+        power_accumulator += game_power
 
-print(possible_accumulator)
+print(power_accumulator)
