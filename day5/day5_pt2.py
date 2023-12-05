@@ -40,13 +40,16 @@ with open('input', 'r', encoding='cp1047') as file:
         # Ignore blank lines cause who cares
         if len(line) == 0: continue
         # Fetch the seed types
+        # This is gruesome and I had to chunk this into processing bits in the input...
+        # Not my proudest moment but I couldn't sleep with it the problem unsolved!
         if 'seeds' in line:
             seeds = line.split(':')[1].split()
             scaled_seeds = []
-            for i in range(len(seeds)):
-                for j in range(int(seeds[i]), int(seeds[i]) + int(seeds[i + 1])):
-                    scaled_seeds.append(i)
-                i += 1
+            i = 0
+            while i < len(seeds):
+                for seed in range(int(seeds[i]), int(seeds[i]) + int(seeds[i+1]) + 1):
+                    scaled_seeds.append(seed)
+                i += 2
             seeds = scaled_seeds
         elif 'seed-to-soil map' in line:
             reading_stos = True
