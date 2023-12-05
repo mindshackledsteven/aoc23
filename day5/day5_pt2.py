@@ -42,6 +42,12 @@ with open('input', 'r', encoding='cp1047') as file:
         # Fetch the seed types
         if 'seeds' in line:
             seeds = line.split(':')[1].split()
+            scaled_seeds = []
+            for i in range(len(seeds)):
+                for j in range(int(seeds[i]), int(seeds[i]) + int(seeds[i + 1])):
+                    scaled_seeds.append(i)
+                i += 1
+            seeds = scaled_seeds
         elif 'seed-to-soil map' in line:
             reading_stos = True
             reading_stof = False
