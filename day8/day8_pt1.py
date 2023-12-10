@@ -34,6 +34,7 @@ with open('input', 'r', encoding='cp1047') as file:
           da_map.append({'source': start, 'left': left, 'right': right})
       else:
          instructions = line.strip()
+         
 current_node = 'AAA'
 instruction = 0
 step_count = 0
